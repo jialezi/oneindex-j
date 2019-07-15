@@ -12,7 +12,7 @@
 <?php 
 function file_ico($item){
   $ext = strtolower(pathinfo($item['name'], PATHINFO_EXTENSION));
-  if(in_array($ext,['bmp','jpg','jpeg','png','gif'])){
+  if(in_array($ext,['bmp','jpg','jpeg','png','gif','webp'])){
   	return "image";
   }
   if(in_array($ext,['mp4','mkv','webm','avi','mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'mkv', 'asf'])){
@@ -41,7 +41,7 @@ function file_ico($item){
 	display: none;
 }
 .thumb .mdui-list-item a ,.thumb .mdui-list-item {
-	width:217px;
+	width:213px;
 	height: 230px;
 	float: left;
 	margin: 10px 10px !important;
@@ -92,7 +92,7 @@ function file_ico($item){
 		<?php foreach((array)$items as $item):?>
 			<?php if(!empty($item['folder'])):?>
 
-		<li class="mdui-list-item mdui-ripple">
+		<li class="mdui-list-item mdui-ripple" ata-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>">
 			<a href="<?php echo get_absolute_path($root.$path.rawurlencode($item['name']));?>">
 			  <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
 				<i class="mdui-icon material-icons">folder_open</i>
@@ -103,7 +103,7 @@ function file_ico($item){
 		  	</a>
 		</li>
 			<?php else:?>
-		<li class="mdui-list-item file mdui-ripple">
+		<li class="mdui-list-item file mdui-ripple" ata-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>">
 			<a href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>" target="_blank">
               <?php if(isImage($item['name']) and $_COOKIE["image_mode"] == "1"):?>
 			  <img class="mdui-img-fluid" src="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']); ?>">
