@@ -5,6 +5,7 @@ class AdminController{
 	  'site_name' => 'OneIndex',
 	  'title_name' => 'Index of /',
 	  'password' => 'oneindex',
+	  'drawer' => '<br>',
 	  'style'=>'nexmoe',
 	  'onedrive_root' =>'',
 	  'cache_type'=>'filecache',
@@ -47,6 +48,7 @@ class AdminController{
 
 			config('site_name',$_POST['site_name']);
 			config('title_name',$_POST['title_name']);
+			config('drawer',$_POST['drawer']);
 			config('style',$_POST['style']);
 			
 			config('onedrive_root',get_absolute_path($_POST['onedrive_root']));
