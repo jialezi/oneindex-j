@@ -100,7 +100,7 @@
    		 </div>
 	</div>   
 	<div class="mdui-list" mdui-collapse="{accordion: true}">
-		<a href="/od/" class="mdui-list-item mdui-ripple">
+		<a href="/" class="mdui-list-item mdui-ripple">
 			<i class="mdui-list-item-icon mdui-icon material-icons">home</i>
 			<div class="mdui-list-item-content">首页</div>
 		</a>
