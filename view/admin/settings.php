@@ -16,6 +16,10 @@
  		  <h4>副标题</h4>
  		  <input class="mdui-textfield-input" type="text" name="title_name" value="<?php echo $config['title_name'];?>"/>
  		</div>
+		<div class="mdui-textfield">
+ 		  <h4>侧边栏代码</h4>
+		  <textarea class="mdui-textfield-input" rows="4" name="drawer"><?php echo $config['drawer'];?></textarea>
+ 		</div>
 
 		<div class="mdui-textfield">
 		  <h4>网站风格<small></small></h4>
