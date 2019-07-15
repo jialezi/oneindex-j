@@ -159,7 +159,7 @@ $$(function() {
               shadeClose: true,
               shade: 0.8,
               area: ['100%', '100%'],
-              content: $$(this).attr('href')+"?s" //iframe的url
+              content: $$(this).attr('href')+"?s=1" //iframe的url
             });
             return false;
         });
