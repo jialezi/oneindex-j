@@ -166,13 +166,7 @@ $$(function() {
     });
 });
 
-$$('#example-bottom').on('click', function () {
-  mdui.snackbar({
-    message: '<img src="/qr.png"/>',
-    position: 'top'
-  });
-});
-	
+
 	
 $ = mdui.JQ;
 
