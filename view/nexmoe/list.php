@@ -149,6 +149,31 @@ function file_ico($item){
 <?php endif;?>
 </div>
 <script>
+var $$ = mdui.JQ;
+$$(function() {
+    $$('.file a').each(function() {
+        $$(this).on('click', function() {
+            layer.open({
+              type: 2,
+              title: '播放窗口', 
+              shadeClose: true,
+              shade: 0.8,
+              area: ['100%', '100%'],
+              content: $$(this).attr('href')+"?s" //iframe的url
+            });
+            return false;
+        });
+    });
+});
+
+$$('#example-bottom').on('click', function () {
+  mdui.snackbar({
+    message: '<img src="/qr.png"/>',
+    position: 'top'
+  });
+});
+	
+	
 $ = mdui.JQ;
 
 $.fn.extend({
@@ -212,15 +237,7 @@ function thumb(){
 }	
 
 $(function(){
-	$('.file a').each(function(){
-		$(this).on('click', function () {
-			var form = $('<form target=_blank method=post></form>').attr('action', $(this).attr('href')).get(0);
-			$(document.body).append(form);
-			form.submit();
-			$(form).remove();
-			return false;
-		});
-	});
+
 
 	$('.icon-sort').on('click', function () {
         let sort_type = $(this).attr("data-sort"), sort_order = $(this).attr("data-order");
