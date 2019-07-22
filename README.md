@@ -7,47 +7,46 @@
 
 后台侧边栏代码示例
 ```
-<div class="mdui-collapse-item">
-   <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons">folder</i>
-        <div class="mdui-list-item-content">Test</div>
-        <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
-      </div>
-      <div class="mdui-collapse-item-body mdui-list">
-        <a href="/?/456" class="mdui-list-item mdui-ripple ">456</a>
-      </div>
-	  <div class="mdui-collapse-item-body mdui-list">
-        <a href="/?/345" class="mdui-list-item mdui-ripple ">345</a>
-      </div>      
+    <div class="mdui-collapse-item">
+        <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">folder</i>
+            <div class="mdui-list-item-content">Test</div>
+            <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+        </div>
+        <div class="mdui-collapse-item-body mdui-list">
+            <a href="/?/456" class="mdui-list-item mdui-ripple ">456</a>
+        </div>
+	<div class="mdui-collapse-item-body mdui-list">
+            <a href="/?/345" class="mdui-list-item mdui-ripple ">345</a>
+        </div>      
     </div>
 
-     <a href="/?/234" class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons">folder</i>
-      <div class="mdui-list-item-content">234</div>
+    <a href="/?/234" class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">folder</i>
+        <div class="mdui-list-item-content">234</div>
     </a>
     
     <a href="#" class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons">message</i>
-      <div class="mdui-list-item-content">Telegram频道</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">message</i>
+        <div class="mdui-list-item-content">Telegram频道</div>
     </a>
     
-     <span class="mdui-list-item mdui-ripple" id="example-bottom">
-      <i class="mdui-list-item-icon mdui-icon material-icons">attach_money</i>
-      <div class="mdui-list-item-content">打赏</div>
-     </span>
-    
-    <a href="#" class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons">bubble_chart</i>
-      <div class="mdui-list-item-content">Blog</div>
-    </a>
+    <span class="mdui-list-item mdui-ripple" id="example-bottom">
+        <i class="mdui-list-item-icon mdui-icon material-icons">attach_money</i>
+        <div class="mdui-list-item-content">打赏</div>
+    </span>
     
     <a href="#" class="mdui-list-item mdui-ripple">
-      <i class="mdui-list-item-icon mdui-icon material-icons">info_outline</i>
-      <div class="mdui-list-item-content">关于</div>
+        <i class="mdui-list-item-icon mdui-icon material-icons">bubble_chart</i>
+        <div class="mdui-list-item-content">Blog</div>
     </a>
-   </div>
-</div>
- <script>
+    
+    <a href="#" class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">info_outline</i>
+       <div class="mdui-list-item-content">关于</div>
+    </a>
+
+<script>
 var $$ = mdui.JQ;
 $$('#example-bottom').on('click', function () {
   mdui.snackbar({
@@ -55,7 +54,7 @@ $$('#example-bottom').on('click', function () {
     position: 'top'
   });
 });
-  </script>
+</script>
 
 ```
 
