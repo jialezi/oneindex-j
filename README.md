@@ -1,5 +1,8 @@
 
-## 更新
+### V佬的项目基础上更新
+
+## 预览地址  https:od.xkx.me
+
 1.内嵌播放
 
 2.侧边栏功能
@@ -58,6 +61,8 @@ $$('#example-bottom').on('click', function () {
 
 ```
 
+----------------------------------------------------------------------------------------------
+
 # oneindex
 OneDrive Directory Index
 
@@ -66,10 +71,7 @@ OneDrive Directory Index
 
 直接列onedrive目录，文件直链下载。  
 
-## 一键安装（Debian 8）：
-```
-wget --no-check-certificate -qO- https://github.com/0oVicero0/oneindex/raw/master/install.sh |bash
-```
+
 ## 添加 Redis 支持（Debian 8）：
 ```
 # 安装 redis 支持
@@ -78,8 +80,6 @@ apt-get install -y redis-server php5-redis
 bash /etc/init.d/fcgiwrap-php restart
 # 后台选择 redis 模式, 并更新缓存.
 ```
-## 预览地址
-[萌咖 存储仓库](https://moeclub.org/onedrive/)
 
 ## 创意整合
 1.极大简化安装步骤。           
