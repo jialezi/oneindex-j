@@ -3,8 +3,8 @@
 $item['thumb'] = onedrive::thumbnail($item['path']);
 ?>
 <?php view::begin('content');?>
-<link class="dplayer-css" rel="stylesheet" href="//moeclub.org/embedded/static/DPlayer.min.css">
-<script src="//moeclub.org/embedded/static/DPlayer.min.js"></script>
+<link class="dplayer-css" rel="stylesheet" href="//cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.css">
+<script src="//cdn.jsdelivr.net/npm/dplayer/dist/DPlayer.min.js"></script>
 <div class="mdui-container-fluid">
 	<div class="nexmoe-item">
 	<div class="mdui-center" id="dplayer"></div>
