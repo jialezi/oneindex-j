@@ -57,7 +57,7 @@
             height: -webkit-fill-available;
         }
 		.dplayer-video-wrap .dplayer-video {
-			height: -webkit-fill-available;
+			height: -webkit-fill-available !important;
 		}
         .gslide iframe, .gslide video {
            height: -webkit-fill-available;
