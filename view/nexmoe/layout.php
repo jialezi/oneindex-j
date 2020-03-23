@@ -7,9 +7,9 @@
 	<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.1/css/mdui.css">
 	<script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.1/js/mdui.min.js"></script>
 	<script src="//cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>	
-    <script src="https://cdn.staticfile.org/layer/2.3/layer.js"></script>
+	<script src="//cdn.staticfile.org/layer/2.3/layer.js"></script>
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-    <script src="//cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+	<script src="//cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 	 <style>
 		.mdui-appbar .mdui-toolbar			
 			height:56px;
@@ -56,6 +56,9 @@
 		.mdui-img-fluid, .mdui-video-fluid {
             height: -webkit-fill-available;
         }
+		.dplayer-video-wrap .dplayer-video {
+			height: -webkit-fill-available;
+		}
         .gslide iframe, .gslide video {
            height: -webkit-fill-available;
         }
