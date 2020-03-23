@@ -193,7 +193,7 @@ $.fn.extend({
         });
     }
 });
-
+var lightbox = GLightbox();
 function downall() {
      let dl_link_list = Array.from(document.querySelectorAll("li a"))
          .map(x => x.href) // 所有list中的链接
@@ -230,9 +230,9 @@ function thumb(){
 
 }	
 
-var lightbox = GLightbox();
-	
 $(function(){
+
+
 	$('.icon-sort').on('click', function () {
         let sort_type = $(this).attr("data-sort"), sort_order = $(this).attr("data-order");
         let sort_order_to = (sort_order === "less") ? "more" : "less";
