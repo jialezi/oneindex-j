@@ -5,6 +5,9 @@
 
 2.侧边栏功能
 
+3.增加glightbox插件，支持图片响应式弹出，滑动查看。
+如希望视频也才用此插件，请修改view/nexmoe/list.php第107行视频对应的class="iframe"改为class="glightbox"
+
 后台侧边栏代码示例
 ```
     <div class="mdui-collapse-item">
