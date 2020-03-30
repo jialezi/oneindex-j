@@ -116,6 +116,11 @@ function file_ico($item){
 			  <div class="mdui-col-sm-2 mdui-text-right"><?php echo onedrive::human_filesize($item['size']);?></div>
               <?php endif;?>
 		  	</a>
+			<div class="forcedownload "  >
+ 			      <a title="直接下载" href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>">
+			          <button class="mdui-btn mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">file_download</i></button>
+			      </a>
+			</div>
 		</li>
 			<?php endif;?>
 		<?php endforeach;?>
