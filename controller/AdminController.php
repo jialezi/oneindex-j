@@ -50,7 +50,8 @@ class AdminController{
 			config('title_name',$_POST['title_name']);
 			config('drawer',$_POST['drawer']);
 			config('style',$_POST['style']);
-			
+			config('main_domain',$_POST['main_domain']);
+			config('proxy_domain',$_POST['proxy_domain']);
 			config('onedrive_root',get_absolute_path($_POST['onedrive_root']));
 
 			config('onedrive_hide',$_POST['onedrive_hide']);

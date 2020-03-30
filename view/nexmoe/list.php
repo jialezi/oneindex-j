@@ -104,7 +104,7 @@ function file_ico($item){
 		</li>
 			<?php else:?>
 		<li class="mdui-list-item file mdui-ripple" data-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>">
-			<a <?php echo file_ico($item)=="image"?'class="glightbox"':"";echo file_ico($item)=="ondemand_video"?'class="iframe"':"";echo file_ico($item)=="audiotrack"?'class="iframe"':"";?> href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>" target="_blank">
+			<a <?php echo file_ico($item)=="image"?'class="glightbox"':"";echo file_ico($item)=="ondemand_video"?'class="glightbox"':"";echo file_ico($item)=="audiotrack"?'class="iframe"':"";?> href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>" target="_blank">
               <?php if(isImage($item['name']) and $_COOKIE["image_mode"] == "1"):?>
 			  <img class="mdui-img-fluid" src="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']); ?>">
               <?php else:?>

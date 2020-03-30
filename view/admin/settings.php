@@ -16,6 +16,14 @@
  		  <h4>副标题</h4>
  		  <input class="mdui-textfield-input" type="text" name="title_name" value="<?php echo $config['title_name'];?>"/>
  		</div>
+ 		 <div class="mdui-textfield">
+		  <h4>sharepoint域名</h4>
+		  <input class="mdui-textfield-input" type="text" name="main_domain" value="<?php echo $config['main_domain'];?>"/>
+		</div>
+        <div class="mdui-textfield">
+		  <h4>sharepoint CDN 域名-留空不使用该功能</h4>
+		  <input class="mdui-textfield-input" type="text" name="proxy_domain" value="<?php echo $config['proxy_domain'];?>"/>
+		</div>
 		<div class="mdui-textfield">
  		  <h4>侧边栏代码</h4>
 		  <textarea class="mdui-textfield-input" rows="4" name="drawer"><?php echo $config['drawer'];?></textarea>
