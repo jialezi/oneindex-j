@@ -15,10 +15,10 @@ function file_ico($item){
   if(in_array($ext,['bmp','jpg','jpeg','png','gif','webp'])){
   	return "image";
   }
-  if(in_array($ext,['mp4','mkv','webm','avi','mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'mkv', 'asf'])){
+  if(in_array($ext,['mp4','mkv','webm','avi','mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'mkv', 'asf', 'flv', 'm3u8'])){
   	return "ondemand_video";
   }
-  if(in_array($ext,['ogg','mp3','wav'])){
+  if(in_array($ext,['ogg','mp3','wav', 'flac'])){
   	return "audiotrack";
   }
   return "insert_drive_file";
@@ -71,13 +71,13 @@ function file_ico($item){
 <div class="nexmoe-item">
 <div class="mdui-row">
 	<ul class="mdui-list">
-		<li class="mdui-list-item th">
+		<li class="mdui-list-item th" style="padding-right:36px;">
 		  <div class="mdui-col-xs-12 mdui-col-sm-7">文件 <i class="mdui-icon material-icons icon-sort" data-sort="name" data-order="downward">expand_more</i></div>
 		  <div class="mdui-col-sm-3 mdui-text-right">修改时间 <i class="mdui-icon material-icons icon-sort" data-sort="date" data-order="downward">expand_more</i></div>
 		  <div class="mdui-col-sm-2 mdui-text-right">大小 <i class="mdui-icon material-icons icon-sort" data-sort="size" data-order="downward">expand_more</i></div>
 		</li>
 		<?php if($path != '/'):?>
-		<li class="mdui-list-item mdui-ripple">
+		<li class="mdui-list-item mdui-ripple" style="padding-right:36px;">
 			<a href="<?php echo get_absolute_path($root.$path.'../');?>">
 			  <div class="mdui-col-xs-12 mdui-col-sm-7">
 				<i class="mdui-icon material-icons">arrow_upward</i>
