@@ -75,7 +75,7 @@
 			.mdui-toolbar>*{				
 				display: none;
 			}
-			.mdui-toolbar>a:last-child,a:nth-last-of-type(2),.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>i:first-child,.mdui-toolbar-spacer{
+			.mdui-toolbar>a:last-child,.mdui-toolbar>a:nth-last-of-type(2),.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>i:first-child,.mdui-toolbar-spacer{
 				display: block;
 			}
 		}
