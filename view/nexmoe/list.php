@@ -66,6 +66,8 @@ function file_ico($item){
 	position: absolute;
     top: 180px;
 }
+.thumb .forcedownload {
+    display: none; 
 </style>
 
 <div class="nexmoe-item">
@@ -77,7 +79,7 @@ function file_ico($item){
 		  <div class="mdui-col-sm-2 mdui-text-right">大小 <i class="mdui-icon material-icons icon-sort" data-sort="size" data-order="downward">expand_more</i></div>
 		</li>
 		<?php if($path != '/'):?>
-		<li class="mdui-list-item mdui-ripple" style="padding-right:36px;">
+		<li class="mdui-list-item mdui-ripple">
 			<a href="<?php echo get_absolute_path($root.$path.'../');?>">
 			  <div class="mdui-col-xs-12 mdui-col-sm-7">
 				<i class="mdui-icon material-icons">arrow_upward</i>
@@ -92,7 +94,7 @@ function file_ico($item){
 		<?php foreach((array)$items as $item):?>
 			<?php if(!empty($item['folder'])):?>
 
-		<li class="mdui-list-item mdui-ripple" data-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>">
+		<li class="mdui-list-item mdui-ripple" data-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>" style="padding-right:36px;">
 			<a href="<?php echo get_absolute_path($root.$path.rawurlencode($item['name']));?>">
 			  <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
 				<i class="mdui-icon material-icons">folder_open</i>
@@ -104,7 +106,7 @@ function file_ico($item){
 		</li>
 			<?php else:?>
 		<li class="mdui-list-item file mdui-ripple" data-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>">
-			<a <?php echo file_ico($item)=="image"?'class="glightbox"':"";echo file_ico($item)=="ondemand_video"?'class="glightbox"':"";echo file_ico($item)=="audiotrack"?'class="iframe"':"";?> href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>" target="_blank">
+			<a <?php echo file_ico($item)=="image"?'class="glightbox"':"";echo file_ico($item)=="ondemand_video"?'class="iframe"':"";echo file_ico($item)=="audiotrack"?'class="iframe"':"";?> href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>" target="_blank">
               <?php if(isImage($item['name']) and $_COOKIE["image_mode"] == "1"):?>
 			  <img class="mdui-img-fluid" src="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']); ?>">
               <?php else:?>
@@ -113,14 +115,20 @@ function file_ico($item){
 		    	<span><?php e($item['name']);?></span>
 			  </div>
 			  <div class="mdui-col-sm-3 mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?></div>
-			  <div class="mdui-col-sm-2 mdui-text-right"><?php echo onedrive::human_filesize($item['size']);?></div>
+			  <div class="mdui-col-sm-2 mdui-text-right"><?php echo onedrive::human_filesize($item['size']);?>
+			  
+			  </div>
               <?php endif;?>
 		  	</a>
+		  	
 			<div class="forcedownload "  >
  			      <a title="直接下载" href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>">
 			          <button class="mdui-btn mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">file_download</i></button>
 			      </a>
 			</div>
+
+
+
 		</li>
 			<?php endif;?>
 		<?php endforeach;?>
@@ -160,9 +168,11 @@ $$(function() {
         $$(this).on('click', function() {
             layer.open({
               type: 2,
-              title: '播放窗口', 
-              shadeClose: true,
-              shade: 0.8,
+              title: '<a target="_blank" href="'+$$(this).attr('href')+"&s=1"+'">'+ $$(this).find('span').text()+'(点击新窗口打开)</a>', 
+              //shadeClose: true,
+              move: false,
+              shade: false,
+              maxmin: true, 
               area: ['100%', '100%'],
               content: $$(this).attr('href')+"&s=1" //iframe的url
             });
@@ -215,13 +225,13 @@ function downall() {
 }
 
 function thumb(){
-	if($('.mdui-fab i').text() == "apps"){
-		$('.mdui-fab i').text("format_list_bulleted");
+	if($('#thumb i').text() == "apps"){
+		$('#thumb i').text("format_list_bulleted");
 		$('.nexmoe-item').removeClass('thumb');
 		$('.nexmoe-item .mdui-icon').show();
 		$('.nexmoe-item .mdui-list-item').css("background","");
 	}else{
-		$('.mdui-fab i').text("apps");
+		$('#thumb i').text("apps");
 		$('.nexmoe-item').addClass('thumb');
 		$('.mdui-col-xs-12 i.mdui-icon').each(function(){
 			if($(this).text() == "image" || $(this).text() == "ondemand_video"){
@@ -288,5 +298,5 @@ $('#image_view').on('click', function () {
 });
   
 </script>
-<a href="javascript:thumb();" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">format_list_bulleted</i></a>
+
 <?php view::end('content');?>
