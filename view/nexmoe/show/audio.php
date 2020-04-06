@@ -30,6 +30,7 @@ const ap = new APlayer({
         cover: '<?php e( !empty($item['thumb'] ) ? $item['thumb'].'&width=176&height=176' : null);?>'
     }]
 });
+ap.play() //自动播放
 </script>
 
 <?php view::end('content');?>
