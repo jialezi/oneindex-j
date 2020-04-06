@@ -175,7 +175,7 @@ $$(function() {
               maxmin: true, 
               area: ['100%', '100%'],
               content: $$(this).attr('href')+"&s=1" //iframe的url
-              min: function(layero){
+              ,min: function(layero){
                   //layero.hide();  
                   layero.css({top: '90%'})
               }
