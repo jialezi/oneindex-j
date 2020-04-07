@@ -65,6 +65,7 @@ $types = [
 	'rgb'=>"image/x-rgb",
 	'xpm'=>"image/x-xpixmap",
 	'txt'=>"text/plain",
+	'lrc'=>"text/plain",
 	'c'=>"text/plain",
 	'cc'=>"text/plain",
 	'h'=>"text/plain",

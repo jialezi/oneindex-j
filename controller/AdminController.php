@@ -8,7 +8,7 @@ class AdminController{
 	  'drawer' => '<br>',
 	  'style'=>'nexmoe',
 	  'onedrive_root' =>'',
-	  'cache_type'=>'filecache',
+	  'cache_type'=>'secache',
 	  'cache_expire_time' => 3600,
 	  'cache_refresh_time' => 600,
 	  'page_item' => 50,
@@ -19,7 +19,7 @@ class AdminController{
 	    'video5'=>[],
 	    'video'=>['mpg','mpeg','mov','flv','mp4','webm','mkv','m3u8'],
 	    'video2'=>['avi','rm','rmvb','wmv','asf', 'ts'],
-	    'audio'=>['ogg','mp3','wav','flac'],
+	    'audio'=>['ogg','mp3','wav','flac','aac','m4a','ape'],
 	    'code'=>['html','htm','php', 'css', 'go','java','js','json','txt','sh','md'],
 	    'doc'=>['csv','doc','docx','odp','ods','odt','pot','potm','potx','pps','ppsx','ppsxm','ppt','pptm','pptx','rtf','xls','xlsx']
 	  ),

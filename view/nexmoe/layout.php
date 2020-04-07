@@ -9,7 +9,7 @@
 	<script src="//cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>	
 	<script src="//cdn.staticfile.org/layer/2.3/layer.js"></script>
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-	<script src="//cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
 	<link rel="shortcut icon" href="https://image.suning.cn/uimg/ZR/share_order/158562104413864293.jpg">
 
 	 <style>
@@ -55,14 +55,14 @@
 		#instantclick-bar {
         		background: white;
         	}
-		.mdui-img-fluid, .mdui-video-fluid {
+		.mdui-video-fluid {
             height: -webkit-fill-available;
         }
 		.dplayer-video-wrap .dplayer-video {
 			height: -webkit-fill-available !important;
 		}
         .gslide iframe, .gslide video {
-           height: -webkit-fill-available;
+            height: -webkit-fill-available;
         }
 		@media screen and (max-width:950px)	{		
 			.mdui-list-item .mdui-text-right{

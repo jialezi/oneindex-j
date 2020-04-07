@@ -1,5 +1,3 @@
-
-
 <?php 
 $item['thumb'] = onedrive::thumbnail($item['path']);
 

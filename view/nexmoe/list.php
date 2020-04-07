@@ -18,7 +18,7 @@ function file_ico($item){
   if(in_array($ext,['mp4','mkv','webm','avi','mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'mkv', 'asf', 'flv', 'm3u8'])){
   	return "ondemand_video";
   }
-  if(in_array($ext,['ogg','mp3','wav', 'flac'])){
+  if(in_array($ext,['ogg','mp3','wav','flac','aac','m4a','ape'])){
   	return "audiotrack";
   }
   return "insert_drive_file";
@@ -106,7 +106,7 @@ function file_ico($item){
 		</li>
 			<?php else:?>
 		<li class="mdui-list-item file mdui-ripple" data-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>">
-			<a <?php echo file_ico($item)=="image"?'class="glightbox"':"";echo file_ico($item)=="ondemand_video"?'class="iframe"':"";echo file_ico($item)=="audiotrack"?'class="iframe"':"";?> href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>" target="_blank">
+			<a <?php echo file_ico($item)=="image"?'class="glightbox"':"";echo file_ico($item)=="ondemand_video"?'class="iframe"':"";echo file_ico($item)=="audiotrack"?'class="audio"':"";echo file_ico($item)=="insert_drive_file"?'class="dl"':""?> data-name="<?php e($item['name']);?>" data-readypreview="<?php echo strtolower(pathinfo($item['name'], PATHINFO_EXTENSION));?>" href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>" target="_blank">
               <?php if(isImage($item['name']) and $_COOKIE["image_mode"] == "1"):?>
 			  <img class="mdui-img-fluid" src="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']); ?>">
               <?php else:?>
@@ -161,6 +161,8 @@ function file_ico($item){
 </div>
 <?php endif;?>
 </div>
+<script src="//cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <script>
 var $$ = mdui.JQ;
 $$(function() {
@@ -183,12 +185,63 @@ $$(function() {
             return false;
         });
     });
+	$('.file .dl').each(function () {
+        $(this).on('click', function () {
+            var form = $('<form target=_blank method=post></form>').attr('action', $(this).attr('href')).get(0);
+            $(document.body).append(form);
+            form.submit();
+            $(form).remove();
+            return false;
+        });
+    });
+}); 
+window.TC=window.TC||{};
+jQuery(".file .audio").click(function(e){
+            e.preventDefault();
+            TC.preview_audio(this);
 });
-
-
+TC.preview_audio = function(aud){
+    if(!TC.aplayer){
+        TC.aplayerList=[];
+        jQuery("a[data-readypreview]").each(function(){
+            var ext = jQuery(this).data("readypreview");
+                var n = jQuery(this).find("span").text();
+                var l = n.replace("."+ext,".lrc");
+                var la = jQuery('a[data-name="'+l+'"]');
+                var lrc = undefined;
+                if(la.length>0){
+                    lrc = la[0].href+"?TC_direct";
+                }
+                TC.aplayerList.push({
+                    name:n,
+                    url:this.href,
+                    artist:" ",
+                    lrc:lrc
+                });
+        })
+        jQuery('<div id="aplayer">').appendTo("body");
+        TC.aplayer = new APlayer({
+            container: document.getElementById('aplayer'),
+            fixed: true,
+            audio: TC.aplayerList,
+            lrcType: 3
+        });
+    }
+    var k=-1;
+    for(var i in TC.aplayerList){
+        if(TC.aplayerList[i].name==jQuery(aud).data("name")){
+            k=i;
+            break;
+        }
+    }
+    if(k>=0){
+        TC.aplayer.list.switch(k);
+        TC.aplayer.play();
+        TC.aplayer.setMode("normal");
+    }
+}
 	
 $ = mdui.JQ;
-
 $.fn.extend({
     sortElements: function (comparator, getSortable) {
         getSortable = getSortable || function () { return this; };
@@ -302,5 +355,4 @@ $('#image_view').on('click', function () {
 });
   
 </script>
-
 <?php view::end('content');?>
