@@ -203,7 +203,7 @@ jQuery(".file .audio").click(function(e){
 TC.preview_audio = function(aud){
     if(!TC.aplayer){
         TC.aplayerList=[];
-        jQuery("a[data-readypreview]").each(function(){
+        jQuery(".file .audio").each(function(){
             var ext = jQuery(this).data("readypreview");
                 var n = jQuery(this).find("span").text();
                 var l = n.replace("."+ext,".lrc");
