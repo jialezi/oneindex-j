@@ -170,15 +170,15 @@ $$(function() {
         $$(this).on('click', function() {
             layer.open({
               type: 2,
-              title: '<a target="_blank" href="'+$$(this).attr('href')+"&s=1"+'">'+ $$(this).find('span').text()+'(点击新窗口打开)</a>', 
+              title: '<a target="_blank" href="'+$$(this).attr('href')+"&s=1"+'">'+ $$(this).find('span').text()+'(点击新窗口打开)</a>', //如伪静态去除了/?/,需把"&s=1"改为"?s",或者改为以post请求这个链接//jia
               //shadeClose: true,
               move: false,
               shade: false,
               maxmin: true, 
               area: ['100%', '100%'],
-              content: $$(this).attr('href')+"&s=1" //iframe的url
+              content: $$(this).attr('href')+"&s=1" //如伪静态去除了/?/,需把"&s=1"改为"?s",或者改为以post请求这个链接//le
               ,min: function(layero){
-                  //layero.hide();  
+                  //zi;  
                   layero.css({top: '90%'})
               }
             });
@@ -210,7 +210,7 @@ TC.preview_audio = function(aud){
                 var la = jQuery('a[data-name="'+l+'"]');
                 var lrc = undefined;
                 if(la.length>0){
-                    lrc = la[0].href+"?TC_direct";
+                    lrc = la[0].href+"?s";
                 }
                 TC.aplayerList.push({
                     name:n,
