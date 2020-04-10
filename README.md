@@ -1,3 +1,5 @@
+## 预览地址  
+[od.xkx.me](https://od.xkx.me/)
 
 ## V佬的项目基础上更新
 
@@ -11,7 +13,25 @@
 4.增加反代sharepoint.com功能（由ppx[ppxwo.com]修改）
 可通过Nginx/CDN反代sharepoint.com，加快速度。
 
-后台侧边栏代码示例
+5.增加Aplayer获取当前页所有音频列表播放。
+
+其他说明
+
+1.nginx伪静态
+```
+if (!-f $request_filename){
+set $rule_0 1$rule_0;
+}
+if (!-d $request_filename){
+set $rule_0 2$rule_0;
+}
+if ($rule_0 = "21"){
+rewrite ^/(.*)$ /index.php?/$1 last;
+}
+```
+重要:如设置了伪静态去除/?/,需把view/nexmoe/list.php的173和179行的"&s=1"改为"?s"(或者改为以post方式请求这个链接，我不会改啊)
+               
+2.后台侧边栏代码示例
 ```
     <div class="mdui-collapse-item">
         <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
@@ -63,9 +83,6 @@ $$('#example-bottom').on('click', function () {
 </script>
 
 ```
-
-## 预览地址  
-[od.xkx.me](https://od.xkx.me/)
 
 ----------------------------------------------------------------------------------------------
 
