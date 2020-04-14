@@ -161,7 +161,10 @@ class IndexController{
 
 		$show = config('show');
 		foreach($show as $n=>$exts){
-			if(in_array($ext,$exts)){
+			if ($ext == 'pdf'){
+				return view::load('show/pdf')->with($data);
+			}
+			elseif(in_array($ext,$exts)){
 				return view::load('show/'.$n)->with($data);
 			}
 		}
