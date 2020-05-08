@@ -1,59 +1,91 @@
+## 预览地址  
+[cloud.yangwenqing.com](https://cloud.yangwenqing.com/)
 
-## V佬的项目基础上更新
+## 魔改功能
+[Vicer](https://github.com/0oVicero0/oneindex)项目基础上更新
 
-1.内嵌播放
+- 1.内嵌播放
 
-2.侧边栏功能
+- 2.侧边栏功能
 
-3.增加glightbox插件，支持图片响应式弹出，滑动查看。
+- 3.增加glightbox插件，支持图片响应式弹出，滑动查看。
 如希望视频也才用此插件，请修改view/nexmoe/list.php第107行视频对应的class="iframe"改为class="glightbox"
 
-后台侧边栏代码示例
+- 4.增加反代sharepoint.com功能（由ppx[ppxwo.com]修改）
+可通过Nginx/CDN反代sharepoint.com，加快速度。
+
+- 5.增加Aplayer获取当前页所有音频列表播放。
+
+- 6.增加PDF.js预览pdf文件。
+
+## 其他说明
+
+### Nginx伪静态
 ```
-    <div class="mdui-collapse-item">
+location / {
+	index index.html index.php; 
+	if (-f $request_filename/index.html){ 
+		rewrite (.*) $1/index.html break; 
+	} 
+	if (-f $request_filename/index.php){ 
+		rewrite (.*) $1/index.php; 
+	} 
+	if (!-f $request_filename){ 
+		rewrite (.*) /index.php; 
+	} 
+} 
+
+rewrite /wp-admin$ $scheme://$host$uri/ permanent;
+```
+               
+### 侧边栏代码
+```
+   <div class="mdui-collapse-item">
+  	
+  	<a href="https://www.yangwenqing.com" target="_blank" class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">grade</i>
+        <div class="mdui-list-item-content">导航</div>
+    </a>
+    
+    <a href="https://yangwenqing.com" target="_blank" class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">brush</i>
+        <div class="mdui-list-item-content">博客</div>
+    </a>
+
         <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
-            <i class="mdui-list-item-icon mdui-icon material-icons">folder</i>
-            <div class="mdui-list-item-content">Test</div>
+            <i class="mdui-list-item-icon mdui-icon material-icons">storage</i>
+            <div class="mdui-list-item-content">云盘</div>
             <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
         </div>
         <div class="mdui-collapse-item-body mdui-list">
-            <a href="/?/456" class="mdui-list-item mdui-ripple ">456</a>
+            <a href="https://pan.yangwenqing.com" target="_blank" class="mdui-list-item mdui-ripple ">天翼云盘</a>
         </div>
 	<div class="mdui-collapse-item-body mdui-list">
-            <a href="/?/345" class="mdui-list-item mdui-ripple ">345</a>
+            <a href="https://yun.yangwenqing.com" target="_blank" class="mdui-list-item mdui-ripple ">Onedrive</a>
         </div>      
     </div>
 
-    <a href="/?/234" class="mdui-list-item mdui-ripple">
-        <i class="mdui-list-item-icon mdui-icon material-icons">folder</i>
-        <div class="mdui-list-item-content">234</div>
-    </a>
-    
-    <a href="#" class="mdui-list-item mdui-ripple">
-        <i class="mdui-list-item-icon mdui-icon material-icons">message</i>
-        <div class="mdui-list-item-content">Telegram频道</div>
-    </a>
+   <div class="mdui-collapse-item-header mdui-list-item mdui-ripple">
+            <i class="mdui-list-item-icon mdui-icon material-icons">build</i>
+            <div class="mdui-list-item-content">工具</div>
+            <i class="mdui-collapse-item-arrow mdui-icon material-icons">keyboard_arrow_down</i>
+        </div>
     
     <span class="mdui-list-item mdui-ripple" id="example-bottom">
         <i class="mdui-list-item-icon mdui-icon material-icons">attach_money</i>
         <div class="mdui-list-item-content">打赏</div>
     </span>
     
-    <a href="#" class="mdui-list-item mdui-ripple">
-        <i class="mdui-list-item-icon mdui-icon material-icons">bubble_chart</i>
-        <div class="mdui-list-item-content">Blog</div>
-    </a>
-    
-    <a href="#" class="mdui-list-item mdui-ripple">
-        <i class="mdui-list-item-icon mdui-icon material-icons">info_outline</i>
-       <div class="mdui-list-item-content">关于</div>
+    <a href="https://mail.google.com/mail/u/0/?view=cm&fs=1&tf=1&source=mailto&to=yovter96@gmail.com" target="_blank" class="mdui-list-item mdui-ripple">
+        <i class="mdui-list-item-icon mdui-icon material-icons">chat</i>
+       <div class="mdui-list-item-content">联系</div>
     </a>
 
 <script>
 var $$ = mdui.JQ;
 $$('#example-bottom').on('click', function () {
   mdui.snackbar({
-    message: '<img src="/qr.png"/>',
+    message: '<img src="/qr.jpg"/>',
     position: 'top'
   });
 });
@@ -61,19 +93,18 @@ $$('#example-bottom').on('click', function () {
 
 ```
 
-## 预览地址  
-[od.xkx.me](https://od.xkx.me/)
-
 ----------------------------------------------------------------------------------------------
-
-# oneindex
-OneDrive Directory Index
 
 ## 功能：
 不用服务器空间，不走服务器流量，  
 
 直接列onedrive目录，文件直链下载。  
 
+## 一键安装（Debian 8）：
+
+```
+wget --no-check-certificate -qO- https://github.com/0oVicero0/oneindex/raw/master/install.sh |bash
+```
 
 ## 添加 Redis 支持（Debian 8）：
 ```
