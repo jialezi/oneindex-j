@@ -13,11 +13,11 @@
 	<link rel="shortcut icon" href="https://image.suning.cn/uimg/ZR/share_order/158562104413864293.jpg">
 
 	 <style>
-		.mdui-appbar .mdui-toolbar			
-			height:56px;
-			font-size: 10px;
+		.mdui-appbar .mdui-toolbar{
+			height:64px;
+			font-size: 15px;
 		}
-       		 .mdui-toolbar>*{
+       	.mdui-toolbar>*{
 			padding: 0 6px;
 			margin: 0 2px;
 			opacity:0.5;
