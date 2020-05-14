@@ -30,7 +30,7 @@
  		</div>
  		<div class="mdui-textfield">
  		  <h4>侧边栏图片</h4>
-		  <input class="mdui-textfield-input" type="text" name="drawer_img" value="<?php echo $config['drawer_img'];?>"/>
+		  <input class="mdui-textfield-input"  name="drawer_img"><?php echo $config['drawer_img'];?></textarea>
  		</div>
 
 		<div class="mdui-textfield">
