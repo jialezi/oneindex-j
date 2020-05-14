@@ -25,12 +25,12 @@
 		  <input class="mdui-textfield-input" type="text" name="proxy_domain" value="<?php echo $config['proxy_domain'];?>"/>
 		</div>
 		<div class="mdui-textfield">
- 		  <h4>侧边栏代码</h4>
+ 		  <h4>侧边栏代码(html格式)</h4>
 		  <textarea class="mdui-textfield-input"  name="drawer"><?php echo $config['drawer'];?></textarea>
  		</div>
  		<div class="mdui-textfield">
  		  <h4>侧边栏图片</h4>
-		  <input class="mdui-textfield-input"  name="drawer_img"><?php echo $config['drawer_img'];?></textarea>
+		  <input class="mdui-textfield-input" type="text" name="drawer_img" value="<?php echo $config['drawer_img'];?>"/>
  		</div>
 
 		<div class="mdui-textfield">
