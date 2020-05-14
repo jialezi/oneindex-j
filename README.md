@@ -17,7 +17,7 @@
 
 6.增加PDF.js预览pdf文件。
 
-7.世纪互联安装方法：把index.php开头的第6和7行的斜杠删除即可。
+7.世纪互联安装方法：~~把index.php开头的第6和7行的斜杠删除即可。~~ 直接安装页面选择即可
 
 8.可修改支持挂载SharePoint，方法：[blog.jialezi.net](http://blog.jialezi.net/?post=157)
 
@@ -35,7 +35,7 @@ if ($rule_0 = "21"){
 rewrite ^/(.*)$ /index.php?/$1 last;
 }
 ```
-重要:如设置了伪静态去除/?/,需把view/nexmoe/list.php的173和179行的"&s=1"改为"?s"(或者改为以post方式请求这个链接，我不会改啊)
+~~重要:如设置了伪静态去除/?/,需把view/nexmoe/list.php的173和179行的"&s=1"改为"?s"(或者改为以post方式请求这个链接，我不会改啊)~~
                
 2.后台侧边栏代码示例(可放自定义的css/js)
 ```

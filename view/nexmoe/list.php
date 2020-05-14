@@ -170,13 +170,13 @@ $$(function() {
         $$(this).on('click', function() {
             layer.open({
               type: 2,
-              title: '<a target="_blank" href="'+$$(this).attr('href')+"&s=1"+'">'+ $$(this).find('span').text()+'(点击新窗口打开)</a>', //如伪静态去除了/?/,需把"&s=1"改为"?s",或者改为以post请求这个链接//jia
+              title: '<a target="_blank" href="'+$$(this).attr('href')+"<?php echo ((config('root_path') == '?')?'&s':'?s'); ?>"+'">'+ $$(this).find('span').text()+'(点击新窗口打开)</a>', //jia,
               //shadeClose: true,
               move: false,
               shade: false,
               maxmin: true, 
               area: ['100%', '100%'],
-              content: $$(this).attr('href')+"&s=1" //如伪静态去除了/?/,需把"&s=1"改为"?s",或者改为以post请求这个链接//le
+              content: $$(this).attr('href')+"<?php echo ((config('root_path') == '?')?'&s':'?s'); ?>" //le
               ,min: function(layero){
                   //zi;  
                   layero.css({top: '90%'})
