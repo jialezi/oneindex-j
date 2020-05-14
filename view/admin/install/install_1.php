@@ -17,6 +17,18 @@
     </div>
 
 	<form action="" method="post">
+		<div class="mdui-textfield">
+		<label class="mdui-textfield-label">版本</label>
+			<label class="mdui-radio">
+    			<input type="radio" name="type" checked value="1"/>
+				<i class="mdui-radio-icon"></i>国际版
+			</label>
+			&nbsp;&nbsp;|&nbsp;&nbsp;
+			<label class="mdui-radio">
+				<input type="radio" name="type" value="2"/>
+    			<i class="mdui-radio-icon"></i>世纪互联
+			</label>
+		</div>
 		<div class="mdui-textfield mdui-textfield-floating-label">
 			<i class="mdui-icon material-icons">https</i>
 			<label class="mdui-textfield-label">应用机密(client secret)</label>

@@ -6,6 +6,7 @@ class AdminController{
 	  'title_name' => 'Index of /',
 	  'password' => 'oneindex',
 	  'drawer' => '<br>',
+	  'drawer_img' => 'https://image.suning.cn/uimg/ZR/share_order/158562116951626812.jpg',
 	  'style'=>'nexmoe',
 	  'onedrive_root' =>'',
 	  'cache_type'=>'secache',
@@ -49,6 +50,7 @@ class AdminController{
 			config('site_name',$_POST['site_name']);
 			config('title_name',$_POST['title_name']);
 			config('drawer',$_POST['drawer']);
+			config('drawer_img',$_POST['drawer_img']);
 			config('style',$_POST['style']);
 			config('main_domain',$_POST['main_domain']);
 			config('proxy_domain',$_POST['proxy_domain']);
@@ -157,6 +159,13 @@ class AdminController{
 			config('client_secret',$_POST['client_secret']);
 			config('client_id',$_POST['client_id']);
 			config('redirect_uri',$_POST['redirect_uri']);
+			if($_POST['type'] == '2'){
+				config('oauth_url','https://login.partner.microsoftonline.cn/common/oauth2/v2.0');
+				config('api_url','https://microsoftgraph.chinacloudapi.cn/v1.0');}
+			else {
+				config('oauth_url','https://login.microsoftonline.com/common/oauth2/v2.0');
+				config('api_url','https://graph.microsoft.com/v1.0');
+			};
 			return view::direct('?step=2');
 		}
 		if($_SERVER['HTTP_HOST'] == 'localhost'){
@@ -166,8 +175,8 @@ class AdminController{
  			$redirect_uri = 'https://moeclub.org/onedrive-login';
 		}
 		
- 		$oauth_url = 'https://login.microsoftonline.com/common/oauth2/authorize';
- 		$app_url = "{$oauth_url}?response_type=code&client_id={$client_id}&redirect_uri={$redirect_uri}";
+ 		//$oauth_url = 'https://login.microsoftonline.com/common/oauth2/authorize';
+ 		//$app_url = "{$oauth_url}?response_type=code&client_id={$client_id}&redirect_uri={$redirect_uri}";
 		return view::load('install/install_1')->with('title','系统安装')
 						->with('redirect_uri', $redirect_uri)
 						->with('app_url', $app_url);

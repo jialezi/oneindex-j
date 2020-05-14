@@ -106,7 +106,7 @@
 
 <div class="mdui-drawer mdui-drawer-close mdui-color-indigo-50" id="main-drawer">
 	<div class="mdui-grid-tile">
-		<a href="javascript:;"><img src="https://image.suning.cn/uimg/ZR/share_order/158562116951626812.jpg"/></a>
+		<a href="javascript:;"><img src="<?php e(config('drawer_img'));?>"/></a>
 		<div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
 			<div class="mdui-grid-tile-text">
 				<div class="mdui-grid-tile-title"><?php e($title.' - '.config('site_name'));?></div>

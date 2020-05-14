@@ -26,7 +26,11 @@
 		</div>
 		<div class="mdui-textfield">
  		  <h4>侧边栏代码</h4>
-		  <textarea class="mdui-textfield-input" rows="4" name="drawer"><?php echo $config['drawer'];?></textarea>
+		  <textarea class="mdui-textfield-input"  name="drawer"><?php echo $config['drawer'];?></textarea>
+ 		</div>
+ 		<div class="mdui-textfield">
+ 		  <h4>侧边栏图片</h4>
+		  <input class="mdui-textfield-input"  name="drawer_img"><?php echo $config['drawer_img'];?></textarea>
  		</div>
 
 		<div class="mdui-textfield">
