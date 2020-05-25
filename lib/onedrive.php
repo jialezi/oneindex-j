@@ -3,6 +3,7 @@
 		static $client_id;
 		static $client_secret;
 		static $redirect_uri;
+		static $typeurl;
 		static $api_url = 'https://graph.microsoft.com/v1.0';
 		static $oauth_url = 'https://login.microsoftonline.com/common/oauth2/v2.0';
 
@@ -72,8 +73,13 @@
 			$path = empty($path)?'/':":/{$path}:/";
 			$token = self::access_token();
 			$request['headers'] = "Authorization: bearer {$token}".PHP_EOL."Content-Type: application/json".PHP_EOL;
-			$request['url'] = self::$api_url."/me/drive/root".$path.$query;
+		$req=config("requrl");
+	
+	
+		$request['url']=$req.$path.$query;
+		
 			return $request;
+			
 		}
 
 		

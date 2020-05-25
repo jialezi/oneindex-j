@@ -11,7 +11,7 @@ class IndexController{
  		$this->z_page = config('page_item');
        
 		//获取路径和文件名
-		$paths = explode('/', rawurldecode($_GET['path']));
+		$paths = explode('/', rawurldecode($_GET['pathh']));
 		if(substr($_SERVER['REQUEST_URI'], -1) != '/'){
 			$this->name = array_pop($paths);
 		}
