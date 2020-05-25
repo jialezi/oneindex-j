@@ -122,6 +122,9 @@ bash /etc/init.d/fcgiwrap-php restart
 一键安装的地址: /var/www/oneindex/config                
 
 ## change log:  
+
+2020-5.25 无需改代码添加shareooint,国内国际版设置向导
+2020-5.24删除不安全代码sp.php,写到控制器里
 18-03-29: 更新直链获取机制、缓存机制，避免频繁访问的token失效  
 18-03-29: 解决非英文编码问题  
 18-03-29: 添加onedrive共享的起始目录 功能  
