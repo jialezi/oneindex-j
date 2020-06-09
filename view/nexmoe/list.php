@@ -1,5 +1,32 @@
 <?php view::layout('layout')?>
 <?php 
+if ($_SERVER["REQUEST_URI"]=="/")
+{
+   header("location:/default");
+}
+////
+/////////
+$var=explode("/",$_SERVER["REQUEST_URI"]);
+$驱动器=$var["1"];
+array_splice($var,0, 1);
+unset($var['0']);
+
+ $请求路径 = implode("/", $var);  
+ 
+$请求路径= str_replace("?".$_SERVER["QUERY_STRING"],"",$请求路径);
+ $url=$请求路径;
+ if ($_GET["page"]==""){
+   $_GET["page"]=1;  
+ }
+$next=$_GET["page"]+1;
+$uppage=$_GET["page"]-1;
+
+//////////
+
+
+
+
+
     function isImage($filename){
       $types = '/(\.jpg$|\.png$|\.jpeg$)/i';
       if(preg_match($types, trim($filename))){
@@ -80,7 +107,12 @@ function file_ico($item){
 		</li>
 		<?php if($path != '/'):?>
 		<li class="mdui-list-item mdui-ripple">
-			<a href="<?php echo get_absolute_path($root.$path.'../');?>">
+			<a href="<?php echo "/". $驱动器."/". $url.'../';?>">
+			    
+			    
+			    
+			    
+			    
 			  <div class="mdui-col-xs-12 mdui-col-sm-7">
 				<i class="mdui-icon material-icons">arrow_upward</i>
 		    	..
@@ -94,25 +126,47 @@ function file_ico($item){
 		<?php foreach((array)$items as $item):?>
 			<?php if(!empty($item['folder'])):?>
 
-		<li class="mdui-list-item mdui-ripple" data-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>" style="padding-right:36px;">
-			<a href="<?php echo get_absolute_path($root.$path.rawurlencode($item['name']));?>">
-			  <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
+		<li  class="mdui-list-item mdui-ripple" data-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>" style="padding-right:36px; " >
+		    
+		    
+		<a href="<?php echo "/". $驱动器."/". $url.rawurlencode($item['name'])."/";?>">
+			  <div id="<?php echo$item["id"] ?>" class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
 				<i class="mdui-icon material-icons">folder_open</i>
 		    	<span><?php e($item['name']);?></span>
 			  </div>
 			  <div class="mdui-col-sm-3 mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?></div>
 			  <div class="mdui-col-sm-2 mdui-text-right"><?php echo onedrive::human_filesize($item['size']);?></div>
 		  	</a>
-		</li>
+		  
+		  	
+		  	
+	
+
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	
+		  	
+		</li>	
+		  
+		
 			<?php else:?>
-		<li class="mdui-list-item file mdui-ripple" data-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>">
-			<a <?php echo file_ico($item)=="image"?'class="glightbox"':"";echo file_ico($item)=="ondemand_video"?'class="iframe"':"";echo file_ico($item)=="audiotrack"?'class="audio"':"";echo file_ico($item)=="insert_drive_file"?'class="dl"':""?> data-name="<?php e($item['name']);?>" data-readypreview="<?php echo strtolower(pathinfo($item['name'], PATHINFO_EXTENSION));?>" href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>" target="_blank">
+		<li id="<?php echo$item["id"] ?>" class="mdui-list-item file mdui-ripple" data-sort data-sort-name="<?php e($item['name']);?>" data-sort-date="<?php echo $item['lastModifiedDateTime'];?>" data-sort-size="<?php echo $item['size'];?>". >
+			<a <?php echo file_ico($item)=="image"?'class="glightbox"':"";echo file_ico($item)=="ondemand_video"?'class="iframe"':"";echo file_ico($item)=="audiotrack"?'class="audio"':"";echo file_ico($item)=="insert_drive_file"?'class="dl"':""?> data-name="<?php e($item['name']);?>" data-readypreview="<?php echo strtolower(pathinfo($item['name'], PATHINFO_EXTENSION));?>" href="<?php echo "/". $驱动器."/". $url.rawurlencode($item['name']);?>" target="_blank">
               <?php if(isImage($item['name']) and $_COOKIE["image_mode"] == "1"):?>
-			  <img class="mdui-img-fluid" src="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']); ?>">
+			  <img class="mdui-img-fluid" src="<?php echo"/". $驱动器."/". $url.rawurlencode($item['name']);?>">
               <?php else:?>
-              <div class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
+              <div  id="<?php echo$item["id"] ?>" class="mdui-col-xs-12 mdui-col-sm-7 mdui-text-truncate">
 				<i class="mdui-icon material-icons"><?php echo file_ico($item);?></i>
-		    	<span><?php e($item['name']);?></span>
+		    	<span id="<?php echo$item["id"] ?>"><?php e($item['name']);?></span>
 			  </div>
 			  <div class="mdui-col-sm-3 mdui-text-right"><?php echo date("Y-m-d H:i:s", $item['lastModifiedDateTime']);?></div>
 			  <div class="mdui-col-sm-2 mdui-text-right"><?php echo onedrive::human_filesize($item['size']);?>
@@ -122,7 +176,7 @@ function file_ico($item){
 		  	</a>
 		  	
 			<div class="forcedownload "  >
- 			      <a title="直接下载" href="<?php echo get_absolute_path($root.$path).rawurlencode($item['name']);?>">
+ 			      <a title="直接下载" href="<?php echo "/". $驱动器."/". $url.rawurlencode($item['name']);?>">
 			          <button class="mdui-btn mdui-ripple mdui-btn-icon"><i class="mdui-icon material-icons">file_download</i></button>
 			      </a>
 			</div>
@@ -137,10 +191,10 @@ function file_ico($item){
 		  <li class="mdui-list-item th">
 		    <div class="mdui-col-sm-6 mdui-left mdui-text-left">
 		      <?php if(($page-1) >= 1 ):?>
-		        <a href="<?php echo preg_replace('/\/$/', '', "$root"); ?><?php e($path) ?>.page-<?php e($page-1) ?>/" class="mdui-btn mdui-btn-raised">上一页</a>
+		        <a href="  <?php echo "/".$驱动器."/".$请求路径."?page=".$uppage; ?>/" class="mdui-btn mdui-btn-raised">上一页</a>
 		      <?php endif;?>
 		      <?php if(($page+1) <= $totalpage ):?>
-		        <a href="<?php echo preg_replace('/\/$/', '', "$root"); ?><?php e($path) ?>.page-<?php e($page+1) ?>/" class="mdui-btn mdui-btn-raised">下一页</a>
+		        <a href="<?php echo "/".$驱动器."/".$请求路径."?page=".$next ?>/" class="mdui-btn mdui-btn-raised  mdui-right">下一页</a>
 		      <?php endif;?>
 		    </div>
 		    <div class="mdui-col-sm-6 mdui-right mdui-text-right">
@@ -160,7 +214,29 @@ function file_ico($item){
 	<?php e($readme);?>
 </div>
 <?php endif;?>
+
 </div>
+	<?php if($_COOKIE["admin"]==config("password")):?>
+
+<!--//悬浮管理-->
+<div class="mdui-fab-wrapper" id="exampleFab"  mdui-fab="options">
+  <button class="mdui-fab mdui-ripple mdui-color-theme-accent">
+    <!-- 默认显示的图标 -->
+    <i class="mdui-icon material-icons">add</i>
+    
+    <!-- 在拨号菜单开始打开时，平滑切换到该图标，若不需要切换图标，则可以省略该元素 -->
+    <i class="mdui-icon mdui-fab-opened material-icons" >touch_app</i>
+  </button>
+  <div class="mdui-fab-dial">
+    <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-pink" onclick="uploadfietwo()"><i class="mdui-icon material-icons">backup</i></button>
+    <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red " onclick="uploadfieone()"><i class="mdui-icon material-icons">file_upload</i></button>
+    <button class="mdui-fab mdui-fab-mini mdui-ripple mdui-color-red " onclick="create_folder()"><i class="mdui-icon material-icons">add</i></button>
+    
+   
+  </div>
+</div>
+
+	<?php endif;?>
 <script src="//cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <script>
@@ -170,13 +246,13 @@ $$(function() {
         $$(this).on('click', function() {
             layer.open({
               type: 2,
-              title: '<a target="_blank" href="'+$$(this).attr('href')+"&s=1"+'">'+ $$(this).find('span').text()+'(点击新窗口打开)</a>', //如伪静态去除了/?/,需把"&s=1"改为"?s",或者改为以post请求这个链接//jia
+              title: '<a target="_blank" href="'+$$(this).attr('href')+"?s"+'">'+ $$(this).find('span').text()+'(点击新窗口打开)</a>', //如伪静态去除了/?/,需把"&s=1"改为"?s",或者改为以post请求这个链接//jia
               //shadeClose: true,
               move: false,
               shade: false,
               maxmin: true, 
               area: ['100%', '100%'],
-              content: $$(this).attr('href')+"&s=1" //如伪静态去除了/?/,需把"&s=1"改为"?s",或者改为以post请求这个链接//le
+              content: $$(this).attr('href')+"?s" //如伪静态去除了/?/,需把"&s=1"改为"?s",或者改为以post请求这个链接//le
               ,min: function(layero){
                   //zi;  
                   layero.css({top: '90%'})

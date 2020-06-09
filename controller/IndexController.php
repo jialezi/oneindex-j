@@ -7,11 +7,24 @@ class IndexController{
 	private $time;
 
 	function __construct(){
- 		//分页页数
- 		$this->z_page = config('page_item');
+	    global $配置文件;
+ 	
+       	//分页页数
+ 		$this->z_page = 100;
        
-		//获取路径和文件名
-		$paths = explode('/', rawurldecode($_GET['pathh']));
+		$var=explode("/",$_SERVER["REQUEST_URI"]);
+        $驱动器=$var["1"];
+        array_splice($var,0, 1);
+        unset($var['0']);
+          $请求路径 = implode("/", $var);  
+         $请求路径= str_replace("?".$_SERVER["QUERY_STRING"],"",$请求路径);
+
+		
+		
+
+	 	$paths = explode('/', rawurldecode($请求路径));
+	 	
+	 
 		if(substr($_SERVER['REQUEST_URI'], -1) != '/'){
 			$this->name = array_pop($paths);
 		}
@@ -21,25 +34,34 @@ class IndexController{
  			$this->page = 1;
  		} else {
  			$this->page = $mat[1][0];
+ 		
  		}
-         
+         $this->page=$_GET["page"]??"1";
  		$this->url_path = preg_replace("(\.page\-[0-9]*/$)","",get_absolute_path(join('/', $paths)));
 
-		$this->path = get_absolute_path(config('onedrive_root').$this->url_path);
+	$this->path = get_absolute_path(config('onedrive_root').$this->url_path);
 		//获取文件夹下所有元素
 		$this->items = $this->items($this->path);
 	}
 
 	
 	function index(){
+	   
+	 
+	    
+	 
+	    
+	    
+	    
+	    
 		//是否404
 		$this->is404();
 
 		$this->is_password();
 
-		header("Expires:-1");
-		header("Cache-Control:no_cache");
-		header("Pragma:no-cache");
+		//header("Expires:-1");
+	//	header("Cache-Control:no_cache");
+	//	header("Pragma:no-cache");
 
 		if(!empty($this->name)){//file
 			return $this->file();
@@ -56,7 +78,7 @@ class IndexController{
 			$this->items['.password']['path'] = get_absolute_path($this->path).'.password';
  		}
 		
-		$password = $this->get_content($this->items['.password']);
+		$password = $this->get_content2($this->items['.password']);
 		list($password) = explode("\n",$password);
 		$password = trim($password);
 		unset($this->items['.password']);
@@ -69,7 +91,8 @@ class IndexController{
 	}
 
 	function password($password){
-		if(!empty($_POST['password']) && strcmp($password, $_POST['password']) === 0){
+		if(!empty($_REQUEST['password']) && strcmp($password, $_REQUEST['password']) === 0){
+		    echo $_POST['password'];
 			setcookie(md5($this->path), $_POST['password']);
 			return true;
 		}
@@ -81,7 +104,11 @@ class IndexController{
 	//文件
 	function file(){
 		$item = $this->items[$this->name];
-		if ($item['folder']) {//是文件夹
+		if ($item['folder']) {//是文件
+		
+		
+		
+		
 			$url = $_SERVER['REQUEST_URI'].'/';
 		}elseif(!is_null($_GET['t']) ){//缩略图
 			$url = $this->thumbnail($item);
@@ -114,7 +141,7 @@ class IndexController{
 
 		if($this->items['README.md']){
 			$this->items['README.md']['path'] = get_absolute_path($this->path).'README.md';
-			$readme = $this->get_content($this->items['README.md']);
+			$readme = $this->get_content2($this->items['README.md']);
 			$Parsedown = new Parsedown();
 			$readme = $Parsedown->text($readme);
 			//不在列表中展示
@@ -123,7 +150,7 @@ class IndexController{
 
 		if($this->items['HEAD.md']){
 			$this->items['HEAD.md']['path'] = get_absolute_path($this->path).'HEAD.md';
-			$head = $this->get_content($this->items['HEAD.md']);
+			$head = $this->get_content2($this->items['HEAD.md']);
 			$Parsedown = new Parsedown();
 			$head = $Parsedown->text($head);
 			//不在列表中展示
@@ -209,7 +236,14 @@ class IndexController{
 		return $navs;
 	}
 
-	static function get_content($item){
+
+
+
+
+
+
+
+	static function get_content2($item){
 		$content = cache::get('content_'.$item['path'], function() use ($item){
 			$resp = fetch::get($item['downloadUrl']);
 			if($resp->http_code == 200){
@@ -218,6 +252,33 @@ class IndexController{
 		}, config('cache_expire_time') );
 		return $content;
 	}
+
+
+
+
+static function get_content($item){
+		$content = cache::get('content_'.$item['path'], function() use ($item){
+		    
+		    
+			$resp = fetch::get($item['downloadUrl']);
+			if($resp->http_code == 200){
+			    return '<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+<script>
+axios.get("'.$item['downloadUrl'].'")
+  .then(function (response) {
+    console.log(response);
+    document.write(response.data)
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+</script>';
+				return $resp->content;
+			}
+		}, config('cache_expire_time') );
+		return $content;
+	}
+
 
 	//404
 	function is404(){

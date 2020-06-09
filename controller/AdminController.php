@@ -36,7 +36,7 @@ class AdminController
     public function login()
     {
         if (!empty($_POST['password']) && $_POST['password'] == config('password')) {
-            setcookie('admin', md5(config('password').config('refresh_token')));
+            setcookie('admin',config('password'));
 
             return view::direct(get_absolute_path(dirname($_SERVER['SCRIPT_NAME'])).'?/admin/');
         }
@@ -78,14 +78,7 @@ class AdminController
 
     public function cache()
     {
-        if (!is_null($_POST['clear'])) {
-            cache::clear();
-            $message = '清除缓存成功';
-        } elseif (!is_null($_POST['refresh'])) {
-            oneindex::refresh_cache(get_absolute_path(config('onedrive_root')));
-            $message = '重建缓存成功';
-        }
-
+        require(ROOT."del.php");
         return view::load('cache')->with('message', $message);
     }
 
@@ -222,12 +215,24 @@ class AdminController
     {
         if (!empty($_POST['client_secret']) && !empty($_POST['client_id']) && !empty($_POST['redirect_uri'])) {
            
-            config('@base', self::$default_config);
-            config('drivestype', $_POST['drivestype']);
-           
-            config('client_secret', $_POST['client_secret']);
-            config('client_id', $_POST['client_id']);
-            config('redirect_uri', $_POST['redirect_uri']);
+         if ($_COOKIE["drivestype"]=="cn"){
+              setcookie('oauth_url',"login.partner.microsoftonline.cn/common/oauth2/v2.0");
+          
+         }else
+         {
+                setcookie('oauth_url',"https://login.microsoftonline.com/common/oauth2/v2.0");
+         }
+          
+  setcookie('drivestype',$_POST["drivestype"]);
+   setcookie('client_secret',$_POST["client_secret"]);
+   setcookie('client_id',$_POST["client_id"]);
+ 
+   setcookie('redirect_uri',$_POST["redirect_uri"]);
+  
+  
+  
+  
+  
   
             return view::direct('?step=2');
         }
@@ -245,18 +250,14 @@ class AdminController
       public function install_2()
     {
         
+$scope = urlencode("offline_access files.readwrite.all");
+			$redirect_uri = $_COOKIE["redirect_uri"];
+			$url = $_COOKIE["oauth_url"]."/authorize?client_id={$client_id}&scope={$scope}&response_typ=code&redirect_uri={$redirect_uri}";
 
-if(config("drivestype")=="cn"){
-    onedrive::$api_url = "https://microsoftgraph.chinacloudapi.cn/v1.0";
-onedrive::$oauth_url = "https://login.partner.microsoftonline.cn/common/oauth2/v2.0";
-
-    
-    
-}
         
         
         
-        config("requrl",onedrive::$api_url.'/me/drive/root');
+     
         return view::load('install/install_2')->with('title', '系统安装');
     }
 
