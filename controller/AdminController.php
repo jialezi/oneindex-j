@@ -5,9 +5,10 @@ class AdminController{
 	  'site_name' => 'OneIndex',
 	  'title_name' => 'Index of /',
 	  'password' => 'oneindex',
-	  'drawer' => '<br>',
+	  'drawer' => '<a href="/" class="mdui-list-item mdui-ripple"><i class="mdui-list-item-icon mdui-icon material-icons">home</i><div class="mdui-list-item-content">首页</div></a>',
 	  'drawer_img' => 'https://image.suning.cn/uimg/ZR/share_order/158562116951626812.jpg',
 	  'style'=>'nexmoe',
+      'api_url'=>'',
 	  'onedrive_root' =>'',
 	  'cache_type'=>'secache',
 	  'cache_expire_time' => 3600,
@@ -55,7 +56,7 @@ class AdminController{
 			config('main_domain',$_POST['main_domain']);
 			config('proxy_domain',$_POST['proxy_domain']);
 			config('onedrive_root',get_absolute_path($_POST['onedrive_root']));
-
+			config('api_url',$_POST['api_url']);
 			config('onedrive_hide',$_POST['onedrive_hide']);
 
 			config('cache_type',$_POST['cache_type']);
@@ -161,10 +162,10 @@ class AdminController{
 			config('redirect_uri',$_POST['redirect_uri']);
 			if($_POST['type'] == '2'){
 				config('oauth_url','https://login.partner.microsoftonline.cn/common/oauth2/v2.0');
-				config('api_url','https://microsoftgraph.chinacloudapi.cn/v1.0');}
+				config('api_url','https://microsoftgraph.chinacloudapi.cn/v1.0/me');}
 			else {
 				config('oauth_url','https://login.microsoftonline.com/common/oauth2/v2.0');
-				config('api_url','https://graph.microsoft.com/v1.0');
+				config('api_url','https://graph.microsoft.com/v1.0/me');
 			};
 			return view::direct('?step=2');
 		}

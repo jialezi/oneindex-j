@@ -1,8 +1,6 @@
 <?php view::layout('layout')?>
-
 <?php view::begin('content');?>
 <div class="mdui-container-fluid">
-
 	<div class="mdui-typo">
 	  <h1> 基本设置 <small>设置基本参数</small></h1>
 	</div>
@@ -11,19 +9,14 @@
 		  <h4>网站名称</h4>
 		  <input class="mdui-textfield-input" type="text" name="site_name" value="<?php echo $config['site_name'];?>"/>
 		</div>
-
   		<div class="mdui-textfield">
  		  <h4>副标题</h4>
  		  <input class="mdui-textfield-input" type="text" name="title_name" value="<?php echo $config['title_name'];?>"/>
  		</div>
- 		 <div class="mdui-textfield">
-		  <h4>sharepoint域名</h4>
-		  <input class="mdui-textfield-input" type="text" name="main_domain" value="<?php echo $config['main_domain'];?>"/>
-		</div>
-        <div class="mdui-textfield">
-		  <h4>sharepoint CDN 域名-留空不使用该功能</h4>
-		  <input class="mdui-textfield-input" type="text" name="proxy_domain" value="<?php echo $config['proxy_domain'];?>"/>
-		</div>
+       	<div class="mdui-textfield">
+ 		  <h4>API(如切换成SharePoint，请将链接的"me"改成"sites/{site-id}" |<a target="_blank" href="https://od.xkx.me/sp.php">site-id获取</a>)</h4>
+		  <input class="mdui-textfield-input" type="text" name="api_url" value="<?php echo $config['api_url'];?>"/>
+ 		</div>
 		<div class="mdui-textfield">
  		  <h4>侧边栏代码(html格式)</h4>
 		  <textarea class="mdui-textfield-input"  name="drawer"><?php echo $config['drawer'];?></textarea>
@@ -32,7 +25,6 @@
  		  <h4>侧边栏图片</h4>
 		  <input class="mdui-textfield-input" type="text" name="drawer_img" value="<?php echo $config['drawer_img'];?>"/>
  		</div>
-
 		<div class="mdui-textfield">
 		  <h4>网站风格<small></small></h4>
 		  <select name="style" class="mdui-select">
@@ -49,23 +41,18 @@
 			  <?php endforeach;?>
 		  </select>
 		</div>
-
   		<div class="mdui-textfield">
  		  <h4>项目数量</h4>
  		  <input class="mdui-textfield-input" type="text" name="page_item" value="<?php echo $config['page_item'];?>"/>
   		</div>
-
 		<div class="mdui-textfield">
 		  <h4>起始目录 <small>(空为根目录)</small></h4>
 		  <input class="mdui-textfield-input" type="text" name="onedrive_root" value="<?php echo $config['onedrive_root'];?>"/>
 		</div>
-
-
 		<div class="mdui-textfield">
 		  <h4>需要隐藏的目录 <small>(每行一项,通配识别,清空缓存后生效)</small></h4>
 		  <textarea class="mdui-textfield-input" placeholder="回车换行" name="onedrive_hide"><?=@$config['onedrive_hide'];?></textarea>
 		</div>
-
 		<div class="mdui-textfield">
 		  <h4>缓存类型<small></small></h4>
 		  <select name="cache_type" class="mdui-select">
@@ -76,12 +63,18 @@
 			  <?php endforeach;?>
 		  </select>
 		</div>
-
+ 		 <div class="mdui-textfield">
+		  <h4>sharepoint域名-留空不使用该功能</h4>
+		  <input class="mdui-textfield-input" type="text" name="main_domain" value="<?php echo $config['main_domain'];?>"/>
+		</div>
+        <div class="mdui-textfield">
+		  <h4>sharepoint CDN 域名-留空不使用该功能</h4>
+		  <input class="mdui-textfield-input" type="text" name="proxy_domain" value="<?php echo $config['proxy_domain'];?>"/>
+		</div>
 		<div class="mdui-textfield">
 		  <h4>缓存过期时间(秒)</h4>
 		  <input class="mdui-textfield-input" type="text" name="cache_expire_time" value="<?php echo $config['cache_expire_time'];?>"/>
 		</div>
-
 		<div class="mdui-textfield">
 		  <h4>去掉<code style="color: #c7254e;background-color: #f7f7f9;font-size:16px;">/?/</code> (需配合伪静态使用!!)</h4>
 		  <label class="mdui-textfield-label"></label>
@@ -90,10 +83,6 @@
 			  <i class="mdui-switch-icon"></i>
 		  </label>
 		</div>
-		
-
-		
-
 	   <button type="submit" class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-float-right">
 	   	<i class="mdui-icon material-icons">&#xe161;</i> 保存
 	   </button>

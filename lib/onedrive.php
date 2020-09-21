@@ -72,7 +72,7 @@
 			$path = empty($path)?'/':":/{$path}:/";
 			$token = self::access_token();
 			$request['headers'] = "Authorization: bearer {$token}".PHP_EOL."Content-Type: application/json".PHP_EOL;
-			$request['url'] = self::$api_url."/me/drive/root".$path.$query;
+			$request['url'] = self::$api_url."/drive/root".$path.$query;
 			return $request;
 		}
 
