@@ -5,21 +5,23 @@ class AdminController{
 	  'site_name' => 'OneIndex',
 	  'title_name' => 'Index of /',
 	  'password' => 'oneindex',
-	  'drawer' => '<br>',
+	  'drawer' => '<a href="/" class="mdui-list-item mdui-ripple"><i class="mdui-list-item-icon mdui-icon material-icons">home</i><div class="mdui-list-item-content">首页</div></a>',
+	  'drawer_img' => 'https://image.suning.cn/uimg/ZR/share_order/158562116951626812.jpg',
 	  'style'=>'nexmoe',
+      'api_url'=>'',
 	  'onedrive_root' =>'',
-	  'cache_type'=>'filecache',
+	  'cache_type'=>'secache',
 	  'cache_expire_time' => 3600,
 	  'cache_refresh_time' => 600,
-	  'page_item' => 23,
+	  'page_item' => 50,
 	  'root_path' => '?',
 	  'show'=> array (
 	  	'stream'=>['txt'],
-	    'image' => ['bmp','jpg','jpeg','png','gif'],
-	    'video5'=>['mp4','webm','mkv'],
-	    'video'=>[],
-	    'video2'=>['avi','mpg', 'mpeg', 'rm', 'rmvb', 'mov', 'wmv', 'asf', 'ts', 'flv'],
-	    'audio'=>['ogg','mp3','wav'],
+	    'image' => ['bmp','jpg','jpeg','png','gif','webp'],
+	    'video5'=>[],
+	    'video'=>['mpg','mpeg','mov','flv','mp4','webm','mkv','m3u8'],
+	    'video2'=>['avi','rm','rmvb','wmv','asf', 'ts'],
+	    'audio'=>['ogg','mp3','wav','flac','aac','m4a','ape'],
 	    'code'=>['html','htm','php', 'css', 'go','java','js','json','txt','sh','md'],
 	    'doc'=>['csv','doc','docx','odp','ods','odt','pot','potm','potx','pps','ppsx','ppsxm','ppt','pptm','pptx','rtf','xls','xlsx']
 	  ),
@@ -49,10 +51,12 @@ class AdminController{
 			config('site_name',$_POST['site_name']);
 			config('title_name',$_POST['title_name']);
 			config('drawer',$_POST['drawer']);
+			config('drawer_img',$_POST['drawer_img']);
 			config('style',$_POST['style']);
-			
+			config('main_domain',$_POST['main_domain']);
+			config('proxy_domain',$_POST['proxy_domain']);
 			config('onedrive_root',get_absolute_path($_POST['onedrive_root']));
-
+			config('api_url',$_POST['api_url']);
 			config('onedrive_hide',$_POST['onedrive_hide']);
 
 			config('cache_type',$_POST['cache_type']);
@@ -156,6 +160,13 @@ class AdminController{
 			config('client_secret',$_POST['client_secret']);
 			config('client_id',$_POST['client_id']);
 			config('redirect_uri',$_POST['redirect_uri']);
+			if($_POST['type'] == '2'){
+				config('oauth_url','https://login.partner.microsoftonline.cn/common/oauth2/v2.0');
+				config('api_url','https://microsoftgraph.chinacloudapi.cn/v1.0/me');}
+			else {
+				config('oauth_url','https://login.microsoftonline.com/common/oauth2/v2.0');
+				config('api_url','https://graph.microsoft.com/v1.0/me');
+			};
 			return view::direct('?step=2');
 		}
 		if($_SERVER['HTTP_HOST'] == 'localhost'){
@@ -165,8 +176,8 @@ class AdminController{
  			$redirect_uri = 'https://moeclub.org/onedrive-login';
 		}
 		
- 		$oauth_url = 'https://login.microsoftonline.com/common/oauth2/authorize';
- 		$app_url = "{$oauth_url}?response_type=code&client_id={$client_id}&redirect_uri={$redirect_uri}";
+ 		//$oauth_url = 'https://login.microsoftonline.com/common/oauth2/authorize';
+ 		//$app_url = "{$oauth_url}?response_type=code&client_id={$client_id}&redirect_uri={$redirect_uri}";
 		return view::load('install/install_1')->with('title','系统安装')
 						->with('redirect_uri', $redirect_uri)
 						->with('app_url', $app_url);

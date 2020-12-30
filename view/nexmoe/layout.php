@@ -9,13 +9,15 @@
 	<script src="//cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>	
 	<script src="//cdn.staticfile.org/layer/2.3/layer.js"></script>
 	<link rel="stylesheet" href="//cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
-	<script src="//cdn.jsdelivr.net/gh/mcstudios/glightbox/dist/js/glightbox.min.js"></script>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.css">
+	<link rel="shortcut icon" href="https://image.suning.cn/uimg/ZR/share_order/158562104413864293.jpg">
+
 	 <style>
-		.mdui-appbar .mdui-toolbar			
-			height:56px;
-			font-size: 10px;
+		.mdui-appbar .mdui-toolbar{
+			height:64px;
+			font-size: 15px;
 		}
-       		 .mdui-toolbar>*{
+       	.mdui-toolbar>*{
 			padding: 0 6px;
 			margin: 0 2px;
 			opacity:0.5;
@@ -53,14 +55,14 @@
 		#instantclick-bar {
         		background: white;
         	}
-		.mdui-img-fluid, .mdui-video-fluid {
+		.mdui-video-fluid {
             height: -webkit-fill-available;
         }
 		.dplayer-video-wrap .dplayer-video {
 			height: -webkit-fill-available !important;
 		}
         .gslide iframe, .gslide video {
-           height: -webkit-fill-available;
+            height: -webkit-fill-available;
         }
 		@media screen and (max-width:950px)	{		
 			.mdui-list-item .mdui-text-right{
@@ -73,7 +75,7 @@
 			.mdui-toolbar>*{				
 				display: none;
 			}
-			.mdui-toolbar>a:last-child,.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>i:first-child{
+			.mdui-toolbar>a:last-child,.mdui-toolbar>a:nth-last-of-type(2),.mdui-toolbar>.mdui-typo-headline,.mdui-toolbar>i:first-child,.mdui-toolbar-spacer{
 				display: block;
 			}
 		}
@@ -97,12 +99,14 @@
 			<i class="mdui-icon material-icons mdui-icon-dark" style="margin:0;">chevron_right</i>
 			<a href="<?php e($l);?>"><?php e($n);?></a>
 		<?php endforeach;?>
+		<div class="mdui-toolbar-spacer"></div>
+		<a href="javascript:thumb();" id="thumb" class="mdui-btn mdui-btn-icon" mdui-tooltip="{content: '切换显示'}"><i class="mdui-icon material-icons">format_list_bulleted</i></a>
 	</div>	
 	</header>
 
 <div class="mdui-drawer mdui-drawer-close mdui-color-indigo-50" id="main-drawer">
 	<div class="mdui-grid-tile">
-		<a href="javascript:;"><img src="//p.ssl.qhimg.com/t01ad8dba0b68972b26.jpg"/></a>
+		<a href="javascript:;"><img src="<?php e(config('drawer_img'));?>"/></a>
 		<div class="mdui-grid-tile-actions mdui-grid-tile-actions-gradient">
 			<div class="mdui-grid-tile-text">
 				<div class="mdui-grid-tile-title"><?php e($title.' - '.config('site_name'));?></div>
@@ -111,10 +115,6 @@
    		 </div>
 	</div>   
 	<div class="mdui-list" mdui-collapse="{accordion: true}">
-		<a href="/" class="mdui-list-item mdui-ripple">
-			<i class="mdui-list-item-icon mdui-icon material-icons">home</i>
-			<div class="mdui-list-item-content">首页</div>
-		</a>
     		<?php e(config('drawer'));?>
 	</div>
 </div>

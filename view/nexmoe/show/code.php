@@ -9,7 +9,7 @@
 		$code_type['java'] = 'java';
 		$code_type['js'] = 'javascript';
 		$code_type['json'] = 'json';
-		$code_type['txt'] = 'Text';
+		$code_type['txt'] = 'text';
 		$code_type['sh'] = 'sh';
 		$code_type['md'] = 'Markdown';
 		
@@ -53,8 +53,8 @@
 </div>
 <a href="<?php e($url);?>" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
 
-<script src="//moeclub.org/embedded/static/ace.js"></script>
-<script src="//moeclub.org/embedded/static/ext-language_tools.js"></script>
+<script src="//cdn.bootcss.com/ace/1.4.9/ace.js"></script>
+<script src="//cdn.bootcss.com/ace/1.4.9/ext-language_tools.js"></script>
 <script>
     var editor = ace.edit("editor");
     editor.setTheme("ace/theme/ambiance");
