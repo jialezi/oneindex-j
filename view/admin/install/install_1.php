@@ -17,6 +17,18 @@
     </div>
 
 	<form action="" method="post">
+		<div class="mdui-textfield">
+		<label class="mdui-textfield-label">版本</label>
+			<label class="mdui-radio">
+    			<input type="radio" name="type" checked value="1"/>
+				<i class="mdui-radio-icon"></i>国际版
+			</label>
+			&nbsp;&nbsp;|&nbsp;&nbsp;
+			<label class="mdui-radio">
+				<input type="radio" name="type" value="2"/>
+    			<i class="mdui-radio-icon"></i>世纪互联
+			</label>
+		</div>
 		<div class="mdui-textfield mdui-textfield-floating-label">
 			<i class="mdui-icon material-icons">https</i>
 			<label class="mdui-textfield-label">应用机密(client secret)</label>
@@ -39,12 +51,12 @@
  		   <?php if($redirect_uri != 'http://localhost/'):?>
  		   <label class="mdui-textfield-label">由于你的网站不是 <b>http://localhost/</b> , 将进行中转授权.</label>
 		   <?php endif;?>
-		   <label class="mdui-textfield-label"><?php echo $redirect_uri;?></label>
-		   <input type="text" class="mdui-textfield-input" disabled  value="<?php echo $redirect_uri;?>"/>
-		   <input type="hidden" class="mdui-textfield-input" name="redirect_uri" value="<?php echo $redirect_uri;?>"/>
+		   <input type="text" class="mdui-textfield-input" name="redirect_uri" value="<?php echo $redirect_uri;?>"/>
 		   <div class="mdui-textfield-error">重定向URL不能为空</div>
 		</div>
 		<br>
+
+		
 	 <a class="mdui-btn mdui-btn-raised mdui-float-left" href="?step=0">上一步</a>
 	 <button class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-float-right" type="submit">下一步</button>
 	</form>

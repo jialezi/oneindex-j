@@ -71,8 +71,9 @@
 			$path = self::urlencode($path);
 			$path = empty($path)?'/':":/{$path}:/";
 			$token = self::access_token();
+			$api_url =  config('@base')['api_url'];
 			$request['headers'] = "Authorization: bearer {$token}".PHP_EOL."Content-Type: application/json".PHP_EOL;
-			$request['url'] = self::$api_url."/me/drive/root".$path.$query;
+			$request['url'] = $api_url."/drive/root".$path.$query;
 			return $request;
 		}
 

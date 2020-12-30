@@ -2,9 +2,9 @@
 
 require  __DIR__.'/init.php';
 
-//世纪互联
-//onedrive::$api_url = "https://microsoftgraph.chinacloudapi.cn/v1.0";
-//onedrive::$oauth_url = "https://login.partner.microsoftonline.cn/common/oauth2/v2.0";
+//国际版/世纪互联 api写进配置文件
+onedrive::$oauth_url = config("oauth_url");
+onedrive::$api_url = config("api_url");
 
 
 /**
