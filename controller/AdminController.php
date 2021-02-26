@@ -58,7 +58,7 @@ class AdminController{
 			config('onedrive_root',get_absolute_path($_POST['onedrive_root']));
 			config('api_url',$_POST['api_url']);
 			config('onedrive_hide',$_POST['onedrive_hide']);
-
+            config('refresh_token',$_POST['refresh_token']);
 			config('cache_type',$_POST['cache_type']);
 			config('cache_expire_time',intval($_POST['cache_expire_time']));
 			config('page_item',intval($_POST['page_item']));

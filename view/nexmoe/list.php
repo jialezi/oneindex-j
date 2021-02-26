@@ -40,28 +40,43 @@ function file_ico($item){
 .thumb .mdui-text-right{
 	display: none;
 }
-.thumb .mdui-list-item a ,.thumb .mdui-list-item {
-	width:213px;
-	height: 230px;
-	float: left;
-	margin: 10px 10px !important;
+.thumb .mdui-list-item {
+    width: 210px;
+    height: 230px;
+    float: left;
+    margin: 10px 5px !important;
+    padding-right: 0 !important;
+    border-radius: 10px;
+    border: 1px solid #3f51b5;
 }
-
+@media screen and (max-width: 505px){
+.thumb .mdui-list-item{
+    width:100% !important;
+    margin: 5px 0 !important;
+}}
+.thumb .mdui-text-left{
+    width:100% !important;
+}
 .thumb .mdui-col-xs-12,.thumb .mdui-col-sm-7{
 	width:100% !important;
 	height:230px;
 }
-
+.thumb .page a{
+    height: 100px;
+    width: 100% !important;
+    margin: 5px 0;
+    border: 1px solid #3f51b5;
+}
 .thumb .mdui-list-item .mdui-icon{
-	font-size:100px;
+	font-size:120px;
 	display: block;
 	margin-top: 40px;
-	color: #7ab5ef;
+	color: #3f51b5;
 }
 .thumb .mdui-list-item span{
 	float: left;
 	display: block;
-	text-align: center;
+        text-align: center;
 	width:100%;
 	position: absolute;
     top: 180px;
@@ -134,7 +149,7 @@ function file_ico($item){
 		<?php endforeach;?>
 
 		  <?php if($totalpage > 1 ):?>
-		  <li class="mdui-list-item th">
+		  <li class="mdui-list-item page">
 		    <div class="mdui-col-sm-6 mdui-left mdui-text-left">
 		      <?php if(($page-1) >= 1 ):?>
 		        <a href="<?php echo preg_replace('/\/$/', '', "$root"); ?><?php e($path) ?>.page-<?php e($page-1) ?>/" class="mdui-btn mdui-btn-raised">上一页</a>

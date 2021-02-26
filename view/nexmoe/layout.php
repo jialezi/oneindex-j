@@ -32,7 +32,7 @@
 			opacity:1;
 		}
 		.mdui-container{
-			max-width:950px;
+			max-width:1000px;
 		}
 		.mdui-list-item{
 			-webkit-transition:none;

@@ -83,6 +83,10 @@
 			  <i class="mdui-switch-icon"></i>
 		  </label>
 		</div>
+	    <div class="mdui-textfield">
+		  <h4>refresh_token</h4>
+		  <input class="mdui-textfield-input" type="text" name="refresh_token" value="<?php echo config('refresh_token');?>"/>
+		</div>
 	   <button type="submit" class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-float-right">
 	   	<i class="mdui-icon material-icons">&#xe161;</i> 保存
 	   </button>
