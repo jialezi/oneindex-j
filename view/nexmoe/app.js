@@ -125,7 +125,7 @@ function thumb(){
 		$('#thumb i').text("apps");
 		$('.nexmoe-item').addClass('thumb');
 		$('.mdui-col-xs-12 i.mdui-icon').each(function(){
-			if($(this).text() == "image" || $(this).text() == "ondemand_video"||$(this).text() == "personal_video")
+			if($(this).text() == "image" || $(this).text() == "ondemand_video"|| $(this).text() == "personal_video") {
 				var href = $(this).parent().parent().attr('href');
 				var thumb =(href.indexOf('?') == -1)?'?t=400':'&t=400';
 				$(this).hide();
