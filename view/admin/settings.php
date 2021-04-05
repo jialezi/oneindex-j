@@ -13,10 +13,6 @@
  		  <h4>副标题</h4>
  		  <input class="mdui-textfield-input" type="text" name="title_name" value="<?php echo $config['title_name'];?>"/>
  		</div>
-       	<div class="mdui-textfield">
- 		  <h4>API(如切换成SharePoint，请将链接的"me"改成"sites/{site-id}" |<a target="_blank" href="https://od.xkx.me/sp.php">site-id获取</a>)</h4>
-		  <input class="mdui-textfield-input" type="text" name="api_url" value="<?php echo $config['api_url'];?>"/>
- 		</div>
 		<div class="mdui-textfield">
  		  <h4>侧边栏代码(html格式)</h4>
 		  <textarea class="mdui-textfield-input"  name="drawer"><?php echo $config['drawer'];?></textarea>
@@ -82,10 +78,6 @@
 			  <input type="checkbox" name="root_path" value="?" <?php echo empty($config['root_path'])?'checked':'';?>/>
 			  <i class="mdui-switch-icon"></i>
 		  </label>
-		</div>
-	    <div class="mdui-textfield">
-		  <h4>refresh_token</h4>
-		  <input class="mdui-textfield-input" type="text" name="refresh_token" value="<?php echo config('refresh_token');?>"/>
 		</div>
 	   <button type="submit" class="mdui-btn mdui-color-theme-accent mdui-ripple mdui-float-right">
 	   	<i class="mdui-icon material-icons">&#xe161;</i> 保存

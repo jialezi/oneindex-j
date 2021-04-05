@@ -26,7 +26,7 @@ route::group(function(){
 	route::any('/admin/show','AdminController@show');
 	route::any('/admin/setpass','AdminController@setpass');
 	route::any('/admin/images','AdminController@images');
-
+	route::any('/admin/account','AdminController@account');
 	route::any('/admin/upload','UploadController@index');
 	//守护进程
 	route::any('/admin/upload/run','UploadController@run');

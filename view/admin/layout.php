@@ -25,7 +25,10 @@
       <i class="mdui-list-item-icon mdui-icon material-icons">&#xe8b8;</i>
       <div class="mdui-list-item-content">基本设置</div>
     </a>
-
+	<a href="<?php echo $root?>?/admin/account" class="mdui-list-item">
+      <i class="mdui-list-item-icon mdui-icon material-icons">&#xe8b8;</i>
+      <div class="mdui-list-item-content">账号设置</div>
+    </a>
     <a href="<?php echo $root?>?/admin/cache" class="mdui-list-item">
       <i class="mdui-list-item-icon mdui-icon material-icons">&#xe53b;</i>
       <div class="mdui-list-item-content">页面缓存</div>

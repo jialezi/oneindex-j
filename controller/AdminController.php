@@ -19,8 +19,8 @@ class AdminController{
 	  	'stream'=>['txt'],
 	    'image' => ['bmp','jpg','jpeg','png','gif','webp'],
 	    'video5'=>[],
-	    'video'=>['mpg','mpeg','mov','flv','mp4','webm','mkv','m3u8'],
-	    'video2'=>['avi','rm','rmvb','wmv','asf', 'ts'],
+	    'video'=>['mpg','mpeg','mov','flv','mp4','webm','mkv','m3u8','avi','rm','rmvb','wmv','asf', 'ts'],
+	    'video2'=>[],
 	    'audio'=>['ogg','mp3','wav','flac','aac','m4a','ape'],
 	    'code'=>['html','htm','php', 'css', 'go','java','js','json','txt','sh','md'],
 	    'doc'=>['csv','doc','docx','odp','ods','odt','pot','potm','potx','pps','ppsx','ppsxm','ppt','pptm','pptx','rtf','xls','xlsx']
@@ -56,20 +56,30 @@ class AdminController{
 			config('main_domain',$_POST['main_domain']);
 			config('proxy_domain',$_POST['proxy_domain']);
 			config('onedrive_root',get_absolute_path($_POST['onedrive_root']));
-			config('api_url',$_POST['api_url']);
 			config('onedrive_hide',$_POST['onedrive_hide']);
-            config('refresh_token',$_POST['refresh_token']);
 			config('cache_type',$_POST['cache_type']);
 			config('cache_expire_time',intval($_POST['cache_expire_time']));
 			config('page_item',intval($_POST['page_item']));
-
 			$_POST['root_path'] = empty($_POST['root_path'])?'?':'';
 			config('root_path',$_POST['root_path']);
 		}
 		$config = config('@base');
 		return view::load('settings')->with('config', $config);
 	}
-
+	
+	function account(){
+		if($_POST){
+			config('client_secret',$_POST['client_secret']);
+			config('client_id',$_POST['client_id']);
+			config('redirect_uri',$_POST['redirect_uri']);
+			config('oauth_url',$_POST['oauth_url']);
+			config('api_url',$_POST['api_url']);
+			config('refresh_token',$_POST['refresh_token']);
+		}
+		$config = config('@base');
+		return view::load('account')->with('config', $config);
+	}
+	
 	function cache(){
 		if(!is_null($_POST['clear'])){
 			cache::clear();
@@ -103,9 +113,9 @@ class AdminController{
 		$names = [
 			'stream'=>'直接输出(<5M)，走本服务器流量(stream)',
 			'image' =>'图片(image)',
-			'video'=>'Dplayer 视频(video)',
+			'video'=>'Dplayer 视频(video)，iframe模式显示',
 			'video2'=>'Dplayer DASH 视频(video2)/个人版账户不支持',
-			'video5'=>'html5视频(video5)',
+			'video5'=>'html5视频(video5)，fancybox模式显示',
 			'audio'=>'音频播放(audio)',
 			'code'=>'文本/代码(code)',
 			'doc'=>'文档(doc)'

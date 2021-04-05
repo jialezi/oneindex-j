@@ -135,6 +135,7 @@ class IndexController{
 		if($this->page*$this->z_page >= count($this->items))
 		$this->page = $this->totalpage;
 
+		//return view::load('list')->with('title',  urldecode($this->url_path)) //标题显示文件路径
 		return view::load('list')->with('title', config('title_name'))
 					->with('navs', $navs)
 					->with('path',join("/", array_map("rawurlencode", explode("/", $this->url_path))))

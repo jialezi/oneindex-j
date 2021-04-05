@@ -2,13 +2,13 @@
 [od.xkx.me](https://od.xkx.me/)
 
 ## V佬的项目基础上更新
+######### 本人不会开发，只是在原有基础上做一些微调
 
 1.内嵌播放
 
 2.侧边栏功能
 
-3.增加glightbox插件，支持图片响应式弹出，滑动查看。
-如希望视频也才用此插件，请修改view/nexmoe/list.php第107行视频对应的class="iframe"改为class="glightbox"
+3.增加fancybox插件，支持图片响应式弹出，滑动查看。
 
 4.增加反代sharepoint.com功能（由ppx[ppxwo.com]修改）
 可通过Nginx/CDN反代sharepoint.com，加快速度。
@@ -23,7 +23,7 @@
 
 其他说明
 
-1.nginx伪静态
+1.1 nginx伪静态
 ```
 if (!-f $request_filename){
 set $rule_0 1$rule_0;
@@ -35,8 +35,18 @@ if ($rule_0 = "21"){
 rewrite ^/(.*)$ /index.php?/$1 last;
 }
 ```
-~~重要:如设置了伪静态去除/?/,需把view/nexmoe/list.php的173和179行的"&s=1"改为"?s"(或者改为以post方式请求这个链接，我不会改啊)~~
-               
+
+1.2 Apache伪静态
+```
+<IfModule mod_rewrite.c>
+ RewriteEngine on
+ RewriteBase /
+ RewriteCond %{REQUEST_FILENAME} !-d
+ RewriteCond %{REQUEST_FILENAME} !-f
+ RewriteRule ^(.*)$ index.php/$1 [QSA,PT,L]
+</IfModule>
+```       
+      
 2.后台侧边栏代码示例(可放自定义的css/js)
 ```
     <div class="mdui-collapse-item">
@@ -77,7 +87,6 @@ rewrite ^/(.*)$ /index.php?/$1 last;
         <i class="mdui-list-item-icon mdui-icon material-icons">info_outline</i>
        <div class="mdui-list-item-content">关于</div>
     </a>
-
 <script>
 var $$ = mdui.JQ;
 $$('#example-bottom').on('click', function () {
