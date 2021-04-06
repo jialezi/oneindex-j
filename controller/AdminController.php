@@ -19,8 +19,8 @@ class AdminController{
 	  	'stream'=>['txt'],
 	    'image' => ['bmp','jpg','jpeg','png','gif','webp'],
 	    'video5'=>[],
-	    'video'=>['mpg','mpeg','mov','flv','mp4','webm','mkv','m3u8','avi','rm','rmvb','wmv','asf', 'ts'],
-	    'video2'=>[],
+	    'video'=>['mpg','mpeg','mov','flv','mp4','webm','mkv','m3u8','ts'],
+	    'video2'=>['avi','rm','rmvb','wmv','asf'],
 	    'audio'=>['ogg','mp3','wav','flac','aac','m4a','ape'],
 	    'code'=>['html','htm','php', 'css', 'go','java','js','json','txt','sh','md'],
 	    'doc'=>['csv','doc','docx','odp','ods','odt','pot','potm','potx','pps','ppsx','ppsxm','ppt','pptm','pptx','rtf','xls','xlsx']

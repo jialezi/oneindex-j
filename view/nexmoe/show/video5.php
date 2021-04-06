@@ -1,3 +1,4 @@
+<?php view::layout('layout')?>
 <?php 
 $item['thumb'] = onedrive::thumbnail($item['path']);
 
@@ -13,34 +14,26 @@ $downloadUrl = $item['downloadUrl'];
     	max-height: -webkit-fill-available !important;
     }
 </style>
-<link rel="stylesheet" href="//cdnjs.loli.net/ajax/libs/mdui/0.4.1/css/mdui.css">
+<?php view::begin('content');?>
 <div class="mdui-container-fluid">
 	<div class="nexmoe-item">
-	<video class="mdui-video-fluid mdui-center" preload controls poster="<?php @e($item['thumb']);?>">
-	  <source src="<?php e($item['downloadUrl']);?>" type="video/mp4">
-	</video>
-	<!-- 固定标签 -->
-	<div class="mdui-row">
-	  <select class="mdui-select" mdui-select="{position: 'top'}" id="sel">
-	    <option value="<?php e($url);?>" selected>下载地址</option>
-	    <option value="<video><source src='<?php e($url);?>' type='video/mp4'></video>">引用地址</option>
-	  </select>
-	  <textarea class="mdui-textfield-input" id="val" readonly><?php e($url);?></textarea>
-	</div>
-	<script type="text/javascript">
-	    window.onload = function() {
-	        var sel = document.getElementById("sel");
-	        if(sel && sel.addEventListener){
-	            sel.addEventListener('change',function(e){
-	                var ev = e||window.event;
-	                var target = ev.target||ev.srcElement;
-	                document.getElementById("val").value = target.value;
-	            },false)
-	        }
-	    }
-	</script>
+		<video class="mdui-video-fluid mdui-center" preload controls poster="<?php @e($item['thumb']);?>">
+			<source src="<?php e($item['downloadUrl']);?>" type="video/mp4">
+		</video>
+		<div class="mdui-row">
+		<br>
+		<div class="mdui-textfield">
+			<label class="mdui-textfield-label">下载地址</label>
+			<input class="mdui-textfield-input" type="text" value="<?php e($url);?>"/>
+		</div>
+		<div class="mdui-textfield">
+			<label class="mdui-textfield-label">HTML 引用地址</label>
+			<input class="mdui-textfield-input" type="text" value="<video><source src='<?php e($url);?>' type='video/mp4'></video>"/>
+		</div>
+		<br>
+		</div>
 	</div>
 </div>
 <a href="<?php e($url);?>" class="mdui-fab mdui-fab-fixed mdui-ripple mdui-color-theme-accent"><i class="mdui-icon material-icons">file_download</i></a>
-
+<?php view::end('content');?>
 

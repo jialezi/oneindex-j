@@ -15,7 +15,7 @@ function file_ico($item){
   if(in_array($ext,config('show')['image'])){
   	return "image";
   }
-  if(in_array($ext,config('show')['video'])){
+  if(in_array($ext,config('show')['video'])||in_array($ext,config('show')['video2'])){
   	return "ondemand_video";
   }
   if(in_array($ext,config('show')['video5'])){

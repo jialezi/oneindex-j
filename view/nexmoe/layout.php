@@ -43,7 +43,7 @@
     	<?php view::section('content');?>
 </div>
 <script src="//cdnjs.loli.net/ajax/libs/mdui/0.4.1/js/mdui.min.js"></script>
-<script src="//cdn.bootcss.com/jquery/1.12.3/jquery.min.js"></script>	
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>	
 <script src="//cdn.staticfile.org/layer/2.3/layer.js"></script>
 <script src="//cdn.jsdelivr.net/npm/aplayer/dist/APlayer.min.js"></script>
 <script src="//cdn.staticfile.org/fancybox/3.5.2/jquery.fancybox.min.js"></script>
