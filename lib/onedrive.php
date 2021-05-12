@@ -59,6 +59,7 @@
 				if(!empty($token['refresh_token'])){
 					$token['expires_on'] = time()+ $token['expires_in'];
 					config('@token', $token);
+					config('refresh_token', $token['refresh_token']);
 					return $token['access_token'];
 				}
 			}
